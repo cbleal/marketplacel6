@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -43,7 +44,7 @@ class LoginController extends Controller
      * Redireciona para view checkout caso exista um cart na sessão
      * 
      */
-    protected function authenticaded(Request $request, $user)
+    protected function authenticated(Request $request, $user)
     {      
         if ($user->role == 'ROLE_OWNER') {
             return redirect()->route('admin.stores.index');
