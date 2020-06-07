@@ -45,6 +45,10 @@ Route::group(['middleware' => ['auth', 'access.control.store.admin']], function 
 
     Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
 
+        Route::get('notifications', 'NotificationController@notifications')->name('notifications.index');
+        Route::get('notifications/read-all', 'NotificationController@readAll')->name('notifications.read.all');
+        Route::get('notifications/read/{notification}', 'NotificationController@read')->name('notifications.read');
+
         Route::prefix('stores')->name('stores.')->group(function () {
     
             Route::get('/', 'StoreController@index')->name('index');
@@ -169,3 +173,38 @@ Route::group(['middleware' => ['auth', 'access.control.store.admin']], function 
 // });
 
 Auth::routes();  // ROTAS DE AUTENTICAÇÃO (login, logout, password-confirm, password-reset, register...)
+
+Route::get('not', function() {
+
+    // $user = \App\User::find(1);
+
+    // CRIA NOTIFICAÇÃO
+    // $user->notify(new \App\Notifications\StoreReceiverNewOrder);
+
+    // LISTA NOTIFICAÇÕES
+    // return $user->notifications;
+
+    // LISTA NOTIFICAÇÕES NÃO LIDAS
+    // return $user->unreadNotifications;
+
+    // SELECIONA PRIMEIRA NOTIFICAÇÃO
+    // $notification = $user->notifications->first();
+
+    // MARCA COMO LIDA
+    // $notification->markAsRead();
+
+    // LISTA NOTIFICAÇÕES LIDAS
+    // return $user->readNotifications;
+
+    // QTDE DE NOTIFICAÇÕES
+    // return $user->notifications->count();
+
+    // $stores = [41, 49, 50];
+
+    // $stores = \App\Store::whereIn('id', $stores)->get();
+
+    // return $stores->each(function($store) {
+    //     return $store->user;
+    // });
+
+});

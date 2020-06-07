@@ -32,8 +32,17 @@
       </ul>
 
       <div class="my-2 my-lg-0">        
-        <ul class="navbar-nav mr-auto">        
+        <ul class="navbar-nav mr-auto">       
+          
+          {{-- QTDE NOTIFICAÇÕES --}}
+          <li class="nav-item">
+            <a href="{{ route('admin.notifications.index') }}" class="nav-link">
+              <span class="badge badge-danger">{{auth()->user()->unreadNotifications->count()}}</span>
+              <i class="fa fa-bell"></i>
+            </a>
+          </li>
   
+          {{-- SAIR --}}
           <li class="nav-item">
             <a class="nav-link" href="#" onclick="event.preventDefault; 
                       document.querySelector('form.logout').submit();">Sair</a>
@@ -44,6 +53,7 @@
             </form>
           </li>
 
+          {{-- USER --}}
           <li class="nav-item">
             <span class="nav-link">{{ auth()->user()->name }}</span>
           </li>
